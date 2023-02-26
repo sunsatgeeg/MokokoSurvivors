@@ -11,12 +11,8 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.(png|jpg|gif)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                    },
-                ]
+                test: /\.(png)$/i,
+                type: "asset/resource",
             }
         ],
     },
