@@ -1,39 +1,44 @@
-import playerGreenMokokoSrc from './assets/images/playerGreenMokoko.png';
-import enemySrc from './assets/images/enemy.png';
+// Player
+import playerArcherMokokoSrc from "../assets/images/playerArcherMokoko.png";
+import playerGreenMokokoSrc from "../assets/images/playerGreenMokoko.png";
+
+// enemy
+import enemySrc from "../assets/images/enemy.png";
 
 export class MainScene extends Phaser.Scene {
 
     constructor() {
-        super({ key: 'main', active: true })
+        super({ key: "main" })
     }
 
     preload(): void {
-        this.load.image('blank', './');
-        this.textures.addBase64('playerGreenMokoko', playerGreenMokokoSrc);
-        this.textures.addBase64('enemy', enemySrc);
+        this.load.image("playerArcherMokoko", playerArcherMokokoSrc);
+        this.load.image("playerGreenMokoko", playerGreenMokokoSrc);
+        this.load.image("enemy", enemySrc);
     }
 
     create(): void {
-        const platforms = this.physics.add.staticGroup();
+        // const platforms = this.physics.add.staticGroup();
+        this.physics.add.staticGroup();
 
-        this.add.sprite(100, 450, 'playerGreenMokoko').setName("player");
+        this.add.sprite(100, 450, "playerArcherMokoko").setName("player");
 
         this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('playerGreenMokoko', { start: 0, end: 3 }),
+            key: "left",
+            frames: this.anims.generateFrameNumbers("playerArcherMokoko", { start: 0, end: 3 }),
             frameRate: 60,
             repeat: -1
         });
 
         this.anims.create({
-            key: 'turn',
-            frames: [ { key: 'playerGreenMokoko', frame: 4 } ],
+            key: "turn",
+            frames: [ { key: "playerArcherMokoko", frame: 4 } ],
             frameRate: 60
         });
 
         this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('playerGreenMokoko', { start: 5, end: 8 }),
+            key: "right",
+            frames: this.anims.generateFrameNumbers("playerArcherMokoko", { start: 5, end: 8 }),
             frameRate: 60,
             repeat: -1
         });
@@ -54,15 +59,15 @@ export class MainScene extends Phaser.Scene {
         // @ts-expect-error
         if (arrowCursors.left.isDown || wasdCursor.left.isDown) {
             player.x -= playerDefaltSpeed;
-            // player.anims.play('left', true);
+            // player.anims.play("left", true);
         }
         // @ts-expect-error
         else if (arrowCursors.right.isDown || wasdCursor.right.isDown) {
             player.x += playerDefaltSpeed;
-            // player.anims.play('right', true);
+            // player.anims.play("right", true);
         }
         else {
-            // player.anims.play('turn');
+            // player.anims.play("turn");
         }
 
         // @ts-expect-error
