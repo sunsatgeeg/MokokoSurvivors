@@ -1,14 +1,16 @@
-import Phaser from 'phaser';
-import { MainScene } from './mainScene';
+import Phaser from "phaser";
+import { MainScene } from "./scenes/mainScene";
+import { startScene } from "./scenes/startScene";
+import option from "./option";
 
 const config: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
-    width: 1280,
-    height: 720,
+    width: option.width,
+    height: option.height,
     backgroundColor: 0xcfc,
-    scene: [MainScene],
+    scene: [startScene, MainScene],
     physics: {
-        default: 'arcade',
+        default: "arcade",
         arcade: {
             gravity: { y: 300 },
             debug: false
